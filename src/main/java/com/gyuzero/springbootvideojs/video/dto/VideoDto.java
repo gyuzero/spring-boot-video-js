@@ -17,6 +17,4 @@ public class VideoDto {
 
     private String storeFileNm; // 저장파일명
 
-    private Long fileSize; // 파일크기
-
 }
