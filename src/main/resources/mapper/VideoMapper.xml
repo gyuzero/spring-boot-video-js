@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gyuzero.springbootvideojs.video.mapper.VideoMapper">
+
+    <resultMap id="videoMap" type="com.gyuzero.springbootvideojs.video.dto.VideoDto">
+        <result column="FILE_ID" property="fileId"/>
+        <result column="FILE_STORE_PATH" property="fileStorePath"/>
+        <result column="FILE_EXTSN" property="fileExtsn"/>
+        <result column="ORIGIN_FILE_NM" property="originFileNm"/>
+        <result column="STORE_FILE_NM" property="storeFileNm"/>
+    </resultMap>
+
+    <insert id="store" parameterType="com.gyuzero.springbootvideojs.video.dto.VideoDto">
+        INSERT INTO VIDEO (FILE_STORE_PATH, FILE_EXTSN, ORIGIN_FILE_NM, STORE_FILE_NM)
+        VALUES (#{fileStorePath}, #{fileExtsn}, #{originFileNm}, #{storeFileNm})
+    </insert>
+
+    <select id="loadAll" resultMap="videoMap">
+        SELECT *
+        FROM VIDEO
+        WHERE 1 = 1
+    </select>
+
+    <select id="load" parameterType="int" resultMap="videoMap">
+        SELECT *
+        FROM VIDEO
+        WHERE FILE_ID = #{fileId}
+    </select>
+
+</mapper>
